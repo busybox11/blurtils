@@ -2,7 +2,8 @@ from PIL import Image, ImageFilter
 
 class CustomImage(object):
     def __init__(self, img_path, radius=8):
-        self.img = Image.open(img_path)
+        self.img_path = img_path
+        self.img = Image.open(self.img_path)
         self._radius = radius
 
     @property
@@ -17,3 +18,13 @@ class CustomImage(object):
 
     def full_blur(self):
         return self.img.filter(ImageFilter.GaussianBlur(self._radius))
+
+    def region_blur(self, crop):
+        crop_img = self.img.crop(crop)
+        edit_img = crop_img.filter(ImageFilter.GaussianBlur(self._radius))
+        self.img.paste(edit_img, crop)
+        return self.img
+
+    def clear_edits(self):
+        self.img.close()
+        self.img = Image.open(self.img_path)
