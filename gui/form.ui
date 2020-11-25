@@ -37,20 +37,6 @@
    <property name="styleSheet">
     <string notr="true"/>
    </property>
-   <widget class="QGraphicsView" name="graphicsView">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>690</width>
-      <height>600</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border: 0px;
-box-shadow: none;</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
@@ -223,6 +209,22 @@ box-shadow: none;</string>
       </layout>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>691</width>
+      <height>601</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Please choose an image by clicking on the &quot;Open&quot; button</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
   </widget>
  </widget>

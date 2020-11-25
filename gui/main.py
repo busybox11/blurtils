@@ -20,6 +20,7 @@ class App(QMainWindow):
         ui_file.open(QFile.ReadOnly)
         loader.load(ui_file, self)
         ui_file.close()
+        
         # CUSTOM CSS FILE (just in case)
         # stylesheet = open(os.path.join(os.path.dirname(__file__), "style.css"), "r")
         # self.setStyleSheet(stylesheet.read())
