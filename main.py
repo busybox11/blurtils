@@ -11,6 +11,10 @@ if __name__ == "__main__":
 		output_path = ""
 		radius = 8
 
+		# You're about to see an abomination that should not exist, 
+		# but since I didn't have enough time to finish this properly,
+		# here is it anyway.
+		
 		if "-h" in sys.argv or "--help" in sys.argv:
 			functions.help()
 			sys.exit(0)
