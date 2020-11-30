@@ -1,30 +1,19 @@
-# This Python file uses the following encoding: utf-8
-import sys
-import os
+import sys, os
+from PySide2 import QtGui
+from PySide2.QtWidgets import QApplication, QFileDialog
+from PySide2 import QtUiTools
 
-from PySide2.QtWidgets import QApplication, QMainWindow
-from PySide2.QtCore import QFile
-from PySide2.QtUiTools import QUiLoader
+app = QApplication(sys.argv)
+w = QtUiTools.QUiLoader().load(os.path.join(os.path.dirname(__file__), "form.ui"))
 
-class App(QMainWindow):
-    def __init__(self):
-        super(App, self).__init__()
-        self.load_ui()
+def open_image():
+    name = QFileDialog.getOpenFileName(w, 'Open File')
+    print(name)
+    w.image = QtGui.QImage(name[0])
+    pixmap = QtGui.QPixmap(w.image)
+    w.imageLabel.setPixmap(pixmap)
 
-    def load_ui(self):
-        loader = QUiLoader()
-        path = os.path.join(os.path.dirname(__file__), "form.ui")
-        ui_file = QFile(path)
-        ui_file.open(QFile.ReadOnly)
-        loader.load(ui_file, self)
-        ui_file.close()
-        
-        # CUSTOM CSS FILE (just in case)
-        # stylesheet = open(os.path.join(os.path.dirname(__file__), "style.css"), "r")
-        # self.setStyleSheet(stylesheet.read())
-        # stylesheet.close()
+w.openFileBtn.clicked.connect(open_image)
 
-app = QApplication([])
-widget = App()
-widget.show()
+w.show()
 sys.exit(app.exec_())
