@@ -2,11 +2,9 @@
 import sys
 import os
 
-
 from PySide2.QtWidgets import QApplication, QMainWindow
 from PySide2.QtCore import QFile
 from PySide2.QtUiTools import QUiLoader
-
 
 class App(QMainWindow):
     def __init__(self):
@@ -25,7 +23,6 @@ class App(QMainWindow):
         # stylesheet = open(os.path.join(os.path.dirname(__file__), "style.css"), "r")
         # self.setStyleSheet(stylesheet.read())
         # stylesheet.close()
-
 
 app = QApplication([])
 widget = App()
