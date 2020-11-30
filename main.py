@@ -57,9 +57,20 @@ if __name__ == "__main__":
 			import pathlib
 			output_path = file_path.replace(pathlib.Path(file_path).suffix, "_out" + pathlib.Path(file_path).suffix)
 
+		out = imgcls.CustomImage(file_path, radius)
+
 		if "-f" in sys.argv or "--full" in sys.argv:
-			out = imgcls.CustomImage(file_path, radius)
 			out.full_blur().save(output_path)
+		elif "-a" in sys.argv or "--area" in sys.argv:
+			try:
+				i = sys.argv.index('-a')
+			except ValueError:
+				i = sys.argv.index('--area')
+
+			try:
+				out.region_blur((int(sys.argv[i + 1]), int(sys.argv[i + 2]), int(sys.argv[i + 3]), int(sys.argv[i + 4]))).save(output_path)
+			except Exception as e:
+				sys.exit('Please provide valid area parameters!')
 
 	else:
 		import gui.main
